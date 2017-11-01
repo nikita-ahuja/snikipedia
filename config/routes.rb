@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   resources :photos, only: [:new, :create, :index, :destroy]
   root to: 'photos#index'
-  resources :users, :sessions
+  resources :users
 
- get ‘signup’, to: "users#new", as: ‘signup’
- get ‘login’, to: "sessions#new", as: ‘login’
- get ‘logout’, to: "sessions#destroy", as: ‘logout’
+  get "/users/signup", controller: "users", action: "signup"
+  get "/users/login", controller: "users", action: "login"
 
 
   get 'home/index'
