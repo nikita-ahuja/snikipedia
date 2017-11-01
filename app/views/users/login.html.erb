@@ -1,4 +1,4 @@
-<%= form_with model: @users, url: "profile", method: "post", local: true do |form| %>
+<%= form_with model: @users, url: "/users/login", method: "post", local: true do |form| %>
 
 
   <% if @user.errors.any? %>
