@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    # binding.pry
     if @photo.save
       flash[:success] = "The photo was added!"
       redirect_to root_path

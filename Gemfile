@@ -78,5 +78,6 @@ gem 'autoprefixer-rails'
 # gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'font-awesome-sass', '~> 4.7.0'
 
-gem 'aws-sdk', '~> 3'
+# gem 'aws-sdk', '~> 3'
+gem 'aws-sdk', '< 2.0'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
