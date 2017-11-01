@@ -21,6 +21,8 @@ article_9 = Article.create(title: "Michael Fassbender", body: "In 2011, Fassbend
 
 article_10 = Article.create(title: "Woody Allen", body: "By the mid-1960s, Allen was writing and directing films, first specializing in slapstick comedies before moving into dramatic material influenced by European art cinema during the 1970s, and alternating between comedies and dramas to the present. He is often identified as part of the New Hollywood wave of filmmakers of the mid-1960s to late 1970s.[6] Allen often stars in his films, typically in the persona he developed as a standup. Some of the best-known of his over 50 films are Annie Hall (1977), Manhattan (1979), Hannah and Her Sisters (1986), and Crimes and Misdemeanors (1989). In 2007 he said Stardust Memories (1980), The Purple Rose of Cairo (1985), and Match Point (2005) were his best films.[7] Critic Roger Ebert described Allen as 'a treasure of the cinema'.[8]", summary: "Heywood 'Woody' Allen[1] (born Allan Stewart Konigsberg; December 1, 1935)[2] is an American filmmaker, writer, actor, comedian, and musician whose career spans more than six decades. He worked as a comedy writer in the 1950s, writing jokes and scripts for television and publishing several books of short humor pieces. In the early 1960s, Allen began performing as a stand-up comedian, emphasizing monologues rather than traditional jokes. As a comedian, he developed the persona of an insecure, intellectual, fretful nebbish, which he maintains is quite different from his real-life personality.[3] In 2004, Comedy Central[4] ranked Allen in fourth place on a list of the 100 greatest stand-up comedians, while a UK survey ranked Allen as the third greatest comedian.[5]", user_id: 10, category_id: 5)
 
+
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -31,6 +33,13 @@ article_10 = Article.create(title: "Woody Allen", body: "By the mid-1960s, Allen
 
 
 
-category = 5.times.collect do Category.create({name: Faker::HarryPotter.character, description: Faker::HarryPotter.quote})
-  end
+category = 5.times.collect { Category.create({name: Faker::HarryPotter.character, description: Faker::HarryPotter.quote}) }
 
+
+articles = 10.times.collect { Article.new( {title: Faker::HarryPotter.location, body: Faker::Lorem.paragraph, user_id: rand(1..4), summary: Faker::Hipster.sentence})}
+
+
+articles.each do |article|
+  article.category_id = category.sample.id
+  article.save
+end
