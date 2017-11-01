@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :photos, only: [:new, :create, :index, :destroy]
   root to: 'photos#index'
 
-
+  get "home/donate", to: "home#donate"
 
   get 'home/index'
   root :to => "home#index"
