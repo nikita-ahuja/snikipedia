@@ -6,6 +6,14 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# FOR SAFE KEEPING OF API TOKENS IN .env
+# Just add them below in the format below.
+Dotenv::Railtie.load
+# HOSTNAME = ENV['HOSTNAME']
+# GITHUB_ACCESS_TOKEN = ENV['GITHUB_ACCESS_TOKEN']
+# GOOGLE_API_KEY = ENV['GOOGLE_API_KEY']
+
+
 module Snikipedia
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
