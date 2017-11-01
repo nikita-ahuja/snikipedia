@@ -1,15 +1,4 @@
-<style>
-
-#form-container {
-	width: 90%;
-	margin: auto;
-	border: 2px solid black;
-	padding: 5% 10% 5% 10%;
-}
-
-</style>
-
-<div id="form-container">
+<div id="new-article-container">
 	<%= form_with model: @article, local: true do |form| %>
 
 		<% if @article.errors.any? %>
