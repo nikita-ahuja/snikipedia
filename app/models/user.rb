@@ -2,7 +2,7 @@ require 'bcrypt'
 
 class User < ApplicationRecord
 
-   def password
+  def password
     @password ||= BCrypt::Password.new(self.password_hash)
   end
 

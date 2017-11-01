@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get "/users/signup", controller: "users", action: "signup"
   get "/users/login", controller: "users", action: "login"
-  post "/users/login", controller: "users", action: "login"
+  post "/users/profile", controller: "users", action: "profile"
   resources :users
 
 
