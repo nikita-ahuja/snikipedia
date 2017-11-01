@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+
+## MOVE dotenv TO TOP AND REQUIRE:
+# gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'dotenv-rails', groups: [:development, :test]
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -52,3 +57,26 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+# Adam's Gems
+gem 'pry'
+gem 'faker'
+
+# Use hirb for rails c table view.  Then in rails c:
+gem 'hirb'
+# require 'hirb'
+# Hirb.enable
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+
+# gem 'bootstrap', '~> 4.0.0.beta2'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+# gem 'rails_12factor', group: :production
+# gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+gem 'font-awesome-sass', '~> 4.7.0'
+
+gem 'aws-sdk', '~> 3'
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
