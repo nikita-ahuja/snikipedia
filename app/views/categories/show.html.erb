@@ -1,0 +1,17 @@
+<div class="container">
+  
+  <h1><%= @category.name %></h1> 
+  <p><%= @category.description %></p>
+
+<% 
+=begin %>
+  <% @articles.each do |article| %>
+    <div>
+      <h2><%= article.name %></h2>
+      <p><%= article.summary %></p>
+    </div> 
+<% 
+=end %>
+
+
+</div>
