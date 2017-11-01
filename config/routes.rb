@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles
   resources :photos, only: [:new, :create, :index, :destroy]
   root to: 'photos#index'
 
