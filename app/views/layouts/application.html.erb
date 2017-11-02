@@ -9,27 +9,17 @@
   </head>
 
   <body>
+    <div class="">
+      <%= render partial: 'shared/nav' %>
+    </div>
 
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <%= link_to 'Simple Uploader', root_path, class: 'navbar-brand' %>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to 'Photos', root_path %></li>
-            <li><%= link_to 'Upload Your Photo', new_photo_path %></li>
-          </ul>
-        </div>
+    <div class="container-fluid outer-container" style="margin-top: 30px;">
+
+
+      <div class="row">
+        <%= render partial: 'shared/flash' %>
       </div>
-    </nav>
 
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-          <%= value %>
-        </div>
-      <% end %>
 
       <div id="left-sidebar-container">
         Snikipedia<br>
@@ -68,7 +58,7 @@
         <%= link_to "සිංහල", "https://si.wikipedia.org/wiki/%E0%B6%AF%E0%B7%8A%E0%B7%80%E0%B7%8F%E0%B6%BB%E0%B6%BA:%E0%B6%B4%E0%B6%A7%E0%B7%94%E0%B6%B1" %><br>
       </div>
 
-      <div id="body-container">
+      <div id="body-container" id="main-wrapper">
         <%= yield %>
       </div>
 

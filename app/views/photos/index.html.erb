@@ -1,13 +1,12 @@
-<div class="page-header"><h1>Photos</h1></div>
+<div class="container">
 
-<%#= render @photos %>
-
-<div class="row">
+  <!-- PARTIAL LINK TO PHOTOS/INDEX (VIEW ALL) -->
+  <%= button_to('Upload Photo', new_photo_path, method: :get, :class => 'btn btn-sm btn-primary')  %>
   <% if @photos %>
-    <% @photos.each do |photo| %>
-      <div class="col-md-2">
-        <%= render 'photo', photo: photo %>
-      </div>
-    <% end %>
+    <h3>Photos: <%= @photos.count %></h3>
+    <%= render 'photos_partial', photos: @photos %>
+  <% else %>
+    <h3>No Photos Posted Yet</h3>
   <% end %>
+
 </div>
