@@ -22,7 +22,7 @@ class PhotosController < ApplicationController
   end
 
   # GET /shows/1/edit
-    def edit
+  def edit
   end
 
   # POST /shows
@@ -62,7 +62,8 @@ class PhotosController < ApplicationController
     # end
 
     def photo_params
-      params.require(:photo).permit(:image, :title)
+      # params.require(:photo).permit(:image, :title)
+      params.require(:photo).permit(:image, :title, :user_id, :article_id )
     end
 
 end
