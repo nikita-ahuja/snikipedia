@@ -19,6 +19,9 @@ class UsersController < ApplicationController
   def login
   end
 
+  def logout
+  end
+
   def profile
     @user = User.find_by(username: params[:user][:username])
     if @user.password == params[:user][:password]

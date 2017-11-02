@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/users/signup", controller: "users", action: "signup"
   get "/users/login", controller: "users", action: "login"
   post "/users/profile", controller: "users", action: "profile"
+  post "/users/logout", controller: "users", action: "logout"
 
   get "home/donate", to: "home#donate"
 
