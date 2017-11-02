@@ -9,4 +9,9 @@ class Article < ApplicationRecord
 	# has_many :tags, through: :article_tags
 	# belongs_to :user
 	# belongs_to :category
+
+  def self.search(search)
+    where("title LIKE ? OR body LIKE ? OR summary LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
+  end
+  
 end
