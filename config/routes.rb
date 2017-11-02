@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get 'home/index'
   root :to => "home#index"
 
-  resources :articles, :categories, :photos, :users
+  resources :articles, :categories, :photos, :users, :charges
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
