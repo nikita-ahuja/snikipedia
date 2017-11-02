@@ -65,7 +65,8 @@ Rails.application.configure do
   #     s3_region: ENV.fetch('AWS_S3_REGION'),
   #   }
   # }
-
+  
   config.serve_static_assets = true
+
 
 end
