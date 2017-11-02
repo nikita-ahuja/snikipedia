@@ -4,6 +4,6 @@
   </div>
   <div class="media-body">
     <h4 class="media-heading"><%= photo.title %></h4>
-    <%= link_to 'Remove', photo_path(photo), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %>
+    <%= link_to 'Remove', photo_path(photo), remote: true, class: 'btn btn-danger', method: :delete %>
   </div>
 </div>
