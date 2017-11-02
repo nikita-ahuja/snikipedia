@@ -31,7 +31,11 @@ article_10 = Article.create(title: "Woody Allen", body: "By the mid-1960s, Allen
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+users = 25.times.map do
+  User.create!( :username  => Faker::Zelda.character,
+                :email      => Faker::Internet.email,
+                :password   => 'password' )
+end
 
 category = 5.times.collect { Category.create({name: Faker::HarryPotter.character, description: Faker::HarryPotter.quote}) }
 
