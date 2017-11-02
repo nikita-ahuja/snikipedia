@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def signup
-    @user = User.new
   end
 
   def create
@@ -20,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def logout
-    @user = User.find(session[:user_id]).destroy
     session[:user_id] = nil
     redirect_to root_path
   end
