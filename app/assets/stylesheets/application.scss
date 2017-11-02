@@ -62,25 +62,34 @@
 	padding: 5% 10% 5% 10%;
 }
 
+.navbar-default {
+	z-index: 0;
+	background-color: black;
+}
+
 #left-sidebar-container {
+	z-index: -1;
 	background-color: #797e87;
 	color: white;
 	position: absolute;
 	left: 0px;
-	top: 50px;
+	top: 0px;
+	padding-top: 8%;
 	width: 12%;
-	height: 100%;
+	height: 150%;
 	border-right: 1px solid black;
 	border-top: 1px solid black;
-	font-size: .75em;
+	font-size: 100%;
 	padding-left: .5%;
 }
 
 #body-container {
 	position: relative;
+	float: right;
+	right: 0px;
+	width: 85%;
 }
 
 #mini-text {
 	font-size: .65em;
 }
-
