@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :username
       t.string :email, {null: false }
       t.string :password_hash
+      t.string :role, { default: "standard" }
 
       t.timestamps
     end

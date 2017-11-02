@@ -1,0 +1,39 @@
+#article-container {
+  width: 90%;
+  box-sizing: border-box;
+  margin: auto;
+  border: 2px solid black;
+  padding: 5% 10% 5% 10%;
+  z-index: 0;
+}
+
+#article-sidebar {
+  width: 25%;
+  box-sizing: border-box;
+  float:right;
+  border: 2px solid black;
+  z-index: 1;
+  background-color: #797e87;
+  color: white;
+  margin: 5% 0 0 2%;
+}
+
+#article-photo {
+  border: 1px solid black;
+  z-index: 2;
+  background-color: white;
+  color: black;
+  padding: 30%;
+  margin: 5%;
+}
+
+#plug {
+  font-size: .75em;
+}
+
+#new-article-container {
+  width: 90%;
+  margin: auto;
+  border: 2px solid black;
+  padding: 5% 10% 5% 10%;
+}

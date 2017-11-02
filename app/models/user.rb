@@ -2,6 +2,11 @@ require 'bcrypt'
 
 class User < ApplicationRecord
 
+  has_many :photos
+  has_many :articles
+  has_many :photos
+  has_many :categories
+
   def password
     @password ||= BCrypt::Password.new(self.password_hash)
   end

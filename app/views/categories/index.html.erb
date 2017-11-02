@@ -1,39 +1,10 @@
-<style>
+<div class="categories-container">
 
-a:-webkit-any-link {
-    text-decoration: none;
-    cursor: auto;
-}
-
-body {
-  font-family: sans-serif;
-  font-size: 1.3rem
-}
-
-.central-logo {
-  border-radius: 50%;
-}  
-
-.central-featured-category {
-  margin: auto;
-}
-
-.container {
-  margin: 20px auto;
-  width: 700px;
-  padding: 0px 20px 20px 20px;
-}
-
-</style>
-
-
-<div class="container">
-  
   <h1>Snikipedia</h1>
   <p>The Free Encyclopedia</p>
   <div class="central-wrapper">
     <img class="central-logo" src="https://images.fineartamerica.com/images-medium-large-5/colorful-chimp-art-monkey-business-by-sharon-cummings-sharon-cummings.jpg" width="200" alt="Snikipedia Logo">
-    
+
     <div calss="central-featured-category">
       <% @categories.each do |category| %>
         <h5 id="category-link-title" class="link-box"><%= link_to( category.name, category_path(category)) %></h5>
