@@ -17,3 +17,28 @@
 	<p><%= @article.summary %></p>
 	<p><%= @article.body %></p>
 </div>
+
+
+<!-- ADAM TESTING AREA FOR UPLOADING IMAGE FOR ARTICLES. -->
+
+<div class="row">
+	<% photos = @article.photos %>
+	<% if photos %>
+		<h3>Photos: <%= photos.count %></h3>
+
+		<% photos.each do |photo| %>
+			<div class="col-md-2">
+				<%= render 'photos/photo_partial', photo: photo %>
+			</div>
+		<% end %>
+	<% else %>
+		<h3>No Photos Posted Yet</h3>
+	<% end %>
+
+	<!-- ONLY ADMIN AND ARTICLE AUTHOR CAN UPLOAD IMAGES -->
+	<% if @user && (@user == photo.user || @user.role == 'admin') %>
+	<%= render partial: 'photos/upload_image_modal', article: @article %>
+	<% end %>
+
+
+</div>
