@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user][:id])
+    @user = User.find_by(id: session[:user_id])
   end
 
   private
