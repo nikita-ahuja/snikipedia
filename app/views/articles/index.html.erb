@@ -1,0 +1,12 @@
+<!--disambiguation page -->
+
+<h1>Your Search</h1>
+<p>From Snikipedia, the free encyclopedia</p>
+
+<% if @searched_articles %>
+<ul>
+  <% @searched_articles.each do |a| %>
+        <li><h3 id="article-link-title" class="link-box"><%= link_to( a.title, article_path(a)) %></h3></li>
+  <%end %>
+</ul>  
+<% end %>

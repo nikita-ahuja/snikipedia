@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
 
+	def index
+		@searched_articles = Article.search(params[:search])
+	end
+
 	def new
 		@article = Article.new
 	end
