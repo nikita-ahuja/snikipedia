@@ -1,0 +1,22 @@
+<!-- MODAL LINKS -->
+<!-- <li><a href="#" data-toggle="modal" data-target="#uploadImageModal">Upload Image</a></li> -->
+
+<!-- MODAL BUTTONS -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadImageModal">Upload Image</button>
+
+<!-- LOGIN MODAL -->
+<div class="row modal fade" id="uploadImageModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div style="background: yellow; padding: 20px;" class="modal-dialog" role="document">
+    <div style="background: blue;" class="modal-content">
+      <h3>Upload an Image</h3>
+      <hr>
+
+      <div class="modal-body">
+
+        <%= render 'upload_image_form', photo: Photo.new %>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -13,7 +13,6 @@ Dotenv::Railtie.load
 # GITHUB_ACCESS_TOKEN = ENV['GITHUB_ACCESS_TOKEN']
 # GOOGLE_API_KEY = ENV['GOOGLE_API_KEY']
 
-
 module Snikipedia
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
