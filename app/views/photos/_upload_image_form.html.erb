@@ -1,0 +1,21 @@
+<div class="">
+  <%= form_with(model: photo, remote: true) do |f| %>
+  <%#= form_with(url: photos_path, remote: true) do |f| %>
+    <%= render 'shared/errors', object: @photo %>
+
+    <div class="row form-group field">
+      <%= f.label :title %>
+      <%= f.text_field :title, id: :title_field, class: 'form-control' %>
+    </div>
+
+    <div class="row form-group field">
+      <%= f.label :image %>
+      <%= f.file_field :image, id: :file_field, class: 'form-control'%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Upload', class: 'btn btn-success pull-right'  %>
+    </div>
+
+  <% end %>
+</div>
