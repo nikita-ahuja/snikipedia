@@ -1,16 +1,16 @@
 Snikipedia<br>
         <span id="mini-text">The awesome encyclopedia</span><br>
-        <%= link_to("Main Page", root_url) %><br>
-        <%= link_to("All Categories", categories_path) %>
+        <%= link_to "Main Page", root_url %><br>
+        <%= link_to "All Categories", categories_path %>
             <ul>
-              <li>Ctgry 1</li>
-              <li>Ctgry 2</li>
-              <li>Ctgry 3</li>
-              <li>Ctgry 4</li>
-              <li>Ctgry 5</li>
+              <li><%= link_to "Ctgry1", category_path(id: 1)%></li>
+              <li><%= link_to "Ctgry2", category_path(id: 2) %></li>
+              <li><%= link_to "Ctgry3", category_path(id: 3) %></li>
+              <li><%= link_to "Ctgry4", category_path(id: 4) %></li>
+              <li><%= link_to "Ctgry5", category_path(id:5) %></li>
             </ul>
-        <%= link_to("Donate to Snikipedia", home_donate_path) %>
-        languages<br>
+        <%= link_to "Donate to Snikipedia", home_donate_path %>
+        Languages:<br>
         <%= link_to "Afrikaans", "https://af.wikipedia.org/wiki/Portaal:Inhoudsopgawe/Kategorie%C3%AB" %><br>
         <%= link_to "العربية", "https://ar.wikipedia.org/wiki/%D8%A8%D9%88%D8%A7%D8%A8%D8%A9:%D9%85%D8%AD%D8%AA%D9%88%D9%8A%D8%A7%D8%AA" %><br>
         <%= link_to "অসমীয়া", "https://as.wikipedia.org/wiki/%E0%A7%B1%E0%A6%BF%E0%A6%95%E0%A6%BF%E0%A6%9A%27%E0%A7%B0%E0%A6%BE:%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%80" %><br>
