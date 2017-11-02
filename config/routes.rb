@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   # resources :photos, only: [:new, :create, :index, :destroy]
 
   get "/users/signup", controller: "users", action: "signup"

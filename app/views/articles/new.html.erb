@@ -1,5 +1,5 @@
 <div id="new-article-container">
-	<%= form_with model: @article, local: true do |form| %>
+	<%= simple_form_for @article, local: true do |form| %>
 
 		<% if @article.errors.any? %>
 			<div id="error_explanation">
@@ -16,28 +16,19 @@
 		<% end %>
 
 		<p>
-			<%= form.label :title %><br>
-			<%= form.text_field :title %>
+			<%= form.input :title %>
 		</p>
 
 		<p>
-			<%= form.label :summary %><br>
-			<%= form.text_area :summary %>
+			<%= form.input :summary %>
 		</p>
 
 		<p>
-			<%= form.label :body %><br>
-			<%= form.text_area :body %>
+			<%= form.input :body, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}} %>
 		</p>
 
 		<p>
-			<%= form.label :user_id %><br>
-			<%= form.text_field :user_id %>
-		</p>
-
-		<p>
-			<%= form.label :category_id %><br>
-			<%= form.text_field :category_id %>
+			<%= form.input :user_id %>
 		</p>
 
 		<p>
