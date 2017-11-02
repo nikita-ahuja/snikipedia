@@ -22,19 +22,19 @@
 
 
 .navbar-default {
-	z-index: 0;
+	z-index: 1;
 	background-color: black;
 }
 
 #left-sidebar-container {
-	z-index: -1;
-	background-color: #797e87;
-	color: white;
+	z-index: 0;
+	background-color: #d2d6dd;
+	color: black;
 	position: absolute;
 	left: 0px;
 	top: 0px;
 	padding-top: 8%;
-	width: 12%;
+	width: 15%;
 	height: 200%;
 	border-right: 1px solid black;
 	border-top: 1px solid black;
