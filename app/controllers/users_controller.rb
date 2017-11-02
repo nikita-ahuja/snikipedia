@@ -16,23 +16,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def login
   end
 
   def profile
-    user = User.find_by(username: params[:user][:username])
-    if user.password == params[:user][:password]
-      session[:user_id] = user.id
-      redirect_to "/"
+    @user = User.find_by(username: params[:user][:username])
+    if @user.password == params[:user][:password]
+      session[:user_id] = @user.id
+      redirect_to @user
     else
       render "login"
     end
   end
 
+  def show
+    @user = User.find(params[:user][:id])
+  end
 
   private
   def user_params
