@@ -1,10 +1,10 @@
-<%= render partial: 'upload_image_modal' %>
+<%#= render partial: 'upload_image_modal' %>
 
 <div class="row">
   <% if @photos %>
     <% @photos.each do |photo| %>
       <div class="col-md-2">
-        <%= render 'photo_partial', photo: photo %>
+        <%= render 'photos/photo_partial', photo: photo %>
       </div>
     <% end %>
   <% end %>

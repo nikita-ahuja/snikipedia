@@ -11,6 +11,7 @@ class Article < ApplicationRecord
 	#belongs_to :category
   has_many :article_categories
   has_many :categories, through: :article_categories
+	has_many :photos
 
   def self.search(search)
     where("title LIKE ? OR body LIKE ? OR summary LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")

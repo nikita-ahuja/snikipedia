@@ -1,12 +1,31 @@
 <div id="article-sidebar">
 
-	<div id="article-photo">
-		<p>photo goes here</p>
-	</div>
+		<div id="article-photo">
+			<%= image_tag("/pablo_picasso.jpeg", alt:"pablo_picasso", width: 175) %>
+		</div>
+		<div id="article-photo">
+        <%= image_tag("/miles_davis.jpeg", alt:"miles_davis", width: 175) %>
+  	</div>
+  	<div id="article-photo">
+        <%= image_tag("/louis_armstrong.jpeg", alt:"louis_armstrong", width: 175) %>
+  	</div>
+  	<div id="article-photo">
+        <%= image_tag("/elliott_smith.jpeg", alt:"elliott_smith", width: 175) %>
+  	</div>
+  	<div id="article-photo">
+        <%= image_tag("/radiohead.jpeg", alt:"radiohead", width: 175) %>
+  	</div>
+  	<div id="article-photo">
+        <%= image_tag("/stanley_kubrick.jpeg", alt:"stanley_kubrick", width: 175) %>
+  	</div>
 
-	<p>article_sidebar</p>
-	<p><strong>born:</strong> some info</p>
-	<p><strong>died:</strong> some info</p>
+
+
+	<div id="article-sidebar-text">
+		<p>article_sidebar</p>
+		<p><strong>born:</strong> some info</p>
+		<p><strong>died:</strong> some info</p>
+	</div>
 
 </div>
 
@@ -16,4 +35,32 @@
 	<hr>
 	<p><%= @article.summary %></p>
 	<p><%= raw @article.body %></p>
+</div>
+
+	<p><%= @article.body %></p>
+</div>
+
+
+<!-- ADAM TESTING AREA FOR UPLOADING IMAGE FOR ARTICLES. -->
+
+<div class="row">
+	<% photos = @article.photos %>
+	<% if photos %>
+		<h3>Photos: <%= photos.count %></h3>
+
+		<% photos.each do |photo| %>
+			<div class="col-md-2">
+				<%= render 'photos/photo_partial', photo: photo %>
+			</div>
+		<% end %>
+	<% else %>
+		<h3>No Photos Posted Yet</h3>
+	<% end %>
+
+	<!-- ONLY ADMIN AND ARTICLE AUTHOR CAN UPLOAD IMAGES -->
+	<% if @user && (@user == photo.user || @user.role == 'admin') %>
+	<%= render partial: 'photos/upload_image_modal', article: @article %>
+	<% end %>
+
+
 </div>

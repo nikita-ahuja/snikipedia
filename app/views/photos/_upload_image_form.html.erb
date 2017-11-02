@@ -1,4 +1,5 @@
 <div class="">
+
   <%= form_with(model: photo, remote: true) do |f| %>
   <%#= form_with(url: photos_path, remote: true) do |f| %>
     <%= render 'shared/errors', object: @photo %>
@@ -12,6 +13,11 @@
       <%= f.label :image %>
       <%= f.file_field :image, id: :file_field, class: 'form-control'%>
     </div>
+
+    <% if @article %>
+      <%= f.hidden_field :article_id, :value => @article.id %>
+      <%= f.hidden_field :user_id, :value => @article.user_id %>
+    <% end %>
 
     <div class="actions">
       <%= f.submit 'Upload', class: 'btn btn-success pull-right'  %>
