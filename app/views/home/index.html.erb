@@ -12,6 +12,12 @@
 
 	<div class="column">	
 	<%= render partial: "shared/categories_index" %>
+	<%= form_tag article_path(id: 1), :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search Wikipedia", name: nil %>
+      </p>
+    <% end %>
 
 	</div>
 
