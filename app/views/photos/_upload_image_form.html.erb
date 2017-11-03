@@ -1,8 +1,6 @@
-<div class="">
-
-  <%= form_with(model: photo, remote: true) do |f| %>
-  <%#= form_with(url: photos_path, remote: true) do |f| %>
-    <%= render 'shared/errors', object: @photo %>
+<%= form_with(model: photo, remote: true) do |f| %>
+<%#= form_with(url: photos_path, remote: true) do |f| %>
+  <%= render 'shared/errors', object: @photo %>
 
     <div class="row form-group field">
       <%= f.label :title %>
@@ -14,14 +12,14 @@
       <%= f.file_field :image, id: :file_field, class: 'form-control'%>
     </div>
 
-    <% if @article %>
-      <%= f.hidden_field :article_id, :value => @article.id %>
-      <%= f.hidden_field :user_id, :value => @article.user_id %>
-    <% end %>
+  <% if @article %>
+    <%= f.hidden_field :article_id, :value => @article.id %>
+    <%= f.hidden_field :user_id, :value => @article.user_id %>
+  <% end %>
 
-    <div class="actions">
-      <%= f.submit 'Upload', class: 'btn btn-success pull-right'  %>
+    <div class="row actions">
+      <%= f.submit 'Upload', class: 'btn btn-success btn-sm'  %>
     </div>
 
-  <% end %>
-</div>
+
+<% end %>

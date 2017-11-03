@@ -1,1 +1,7 @@
-<h1 class="welcome-profile">Welcome, <%=@user.username%></h1>
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <%= render 'user_partial', user: @user %>
+
+</div>

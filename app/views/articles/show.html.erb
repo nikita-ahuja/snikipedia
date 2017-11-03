@@ -55,9 +55,9 @@
 	<% end %>
 
 	<!-- ONLY ADMIN AND ARTICLE AUTHOR CAN UPLOAD IMAGES -->
-	<% if @user && (@user == photo.user || @user.role == 'admin') %>
+	<%# if @user && (@user == photo.user || @user.role == 'admin') %>
 	<%= render partial: 'photos/upload_image_modal', article: @article %>
-	<% end %>
+	<%# end %>
 
 
 </div>

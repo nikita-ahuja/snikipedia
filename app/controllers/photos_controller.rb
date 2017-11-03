@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
   # before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  # skip_before_action :require_login, only: [:index, :show]
+
 
   # GET /photos
   # GET /photos.json
@@ -31,7 +33,8 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     if @photo.save
       flash[:success] = "The photo was added!"
-      redirect_to photos_path
+      redirect_to user_path(@current_user)
+      # redirect_to photos_path
     else
       render 'new'
     end
@@ -49,7 +52,7 @@ class PhotosController < ApplicationController
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'The photo was destroyed.' }
+      format.html { redirect_to user_path(@current_user), notice: 'The photo was destroyed.' }
       format.json { head :no_content }
     end
   end

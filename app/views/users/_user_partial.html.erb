@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="erb_header">
+    <h3><%= user.username.capitalize %> Settings</h3>
+  </div>
+
+  <div class="row">
+    <table class="table table-bordered table-hover table-striped text-nowrap">
+      <tr>
+        <th>Username <%= icon('user') %></th>
+        <th>Email <%= icon('envelope') %></th>
+        <th>Updated <%= icon('calendar') %></th>
+        <th colspan="2">Manage <%= icon('sliders') %></th>
+      </tr>
+      <tr>
+        <td><%= user.username.capitalize %></td>
+        <td><%= user.email %></td>
+        <td><%= user.updated_at.strftime('%x')%></td>
+
+        <td><%= link_to edit_user_path(user) do %>
+          <%= icon('pencil-square-o') %>
+          <% end %>
+        </td>
+
+        <td><%= link_to 'Destroy', user, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="row">
+    <table class="table table-bordered table-hover table-striped text-nowrap">
+      <thead>
+        <tr>
+          <th>Title</th>
+        </tr>
+      </thead>
+
+      <% if user.articles %>
+      <% @articles = user.articles %>
+      <h3>My Articles: <%= @articles.count %></h3>
+
+      <tbody>
+        <% @articles.each do |article| %>
+        <tr>
+          <td><%= link_to "#{article.title.capitalize}", article_path(article) %></td>
+        </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+    </table>
+
+    <!-- PARTIAL LINK TO ARTICLES/INDEX (VIEW ALL) -->
+    <%#= render 'articles/articles_partial', articles: @articles %>
+
+  </div>
+
+
+
+  <% if user.photos %>
+  <% @photos = user.photos %>
+  <h3>My Photos: <%= @photos.count %></h3>
+
+  <!-- PARTIAL LINK TO PHOTOS/INDEX (VIEW ALL) -->
+  <%= render 'photos/photos_partial', photos: user.photos %>
+  <% else %>
+  <h3>You haven't uploaded any photos yet.</h3>
+  <p>Let's get started - It's simple!  Post an article, then add your photos!</p>
+  <% end %>
+
+</div>

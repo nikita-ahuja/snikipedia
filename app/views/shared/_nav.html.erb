@@ -20,16 +20,15 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/users/login">LogIn</a></li>
-        <li><a href="/users/signup">Register</a></li>
-        <%# if logged_in? %>
-          <!-- <li><%#= link_to 'Logout', logout_path %></li> -->
-          <!-- <li><%#= link_to @current_user.username.capitalize, @current_user, remote: true %></li> -->
-        <%# else %>
+        <% if logged_in? %>
+          <li><%= link_to 'Logout', logout_path %></li>
+          <li><%= link_to @current_user.username.capitalize, user_path(@current_user) %></li>
+
+        <% else %>
           <%#= render partial: 'layouts/modal' %>
-          <!-- <li><%#= link_to "Sign Up", signup_path %></li> -->
-          <!-- <li><%#= link_to "Log In", login_path %></li> -->
-        <%# end %>
+          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Log In", login_path %></li>
+        <% end %>
       </ul>
 
     </div><!--/.nav-collapse -->
