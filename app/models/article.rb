@@ -4,9 +4,10 @@ class Article < ApplicationRecord
 	# validates :summary, presence: true
 	# validates :user_id, presence: true
 	# validates :category_id, presence: true
+  acts_as_taggable
 
-	has_many :article_tags
-	has_many :tags, through: :article_tags
+	# has_many :article_tags
+	# has_many :tags, through: :article_tags
 	belongs_to :user
   has_many :article_categories
   has_many :categories, through: :article_categories

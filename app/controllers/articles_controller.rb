@@ -14,11 +14,15 @@ class ArticlesController < ApplicationController
 		respond_to do |format|
 			format.html # show.html.erb
 			format.js # show.js.erb
+			# binding.pry
 		end
+
+		@user = User.find_by(id: session[:user_id])
 	end
 
 	def new
 		@article = Article.new
+		# binding.pry
 	end
 
 	def edit
@@ -26,7 +30,6 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
- 
 		if @article.save
 			redirect_to article_path(@article)
 		else
