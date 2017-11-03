@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 		respond_to do |format|
 			format.html # show.html.erb
 			format.js # show.js.erb
+			# binding.pry
 		end
 
 		@user = User.find_by(id: session[:user_id])
@@ -21,6 +22,7 @@ class ArticlesController < ApplicationController
 
 	def new
 		@article = Article.new
+		# binding.pry
 	end
 
 	def edit
@@ -45,11 +47,12 @@ class ArticlesController < ApplicationController
 		############  ORIGINAL BELOW ########
 		@article = Article.new(article_params)
 
-		params['categories'].split(',').each do |category_string|
-    	category = Category.find_or_create_by({ name: category_string.strip })
-    	@aticle.categories << category
-  	end
+		# params['categories'].split(',').each do |category_string|
+  #   	category = Category.find_or_create_by({ name: category_string.strip })
+  #   	@aticle.categories << category
+  # 	end
 
+		# binding.pry
 		if @article.save
 			redirect_to article_path(@article)
 		else
@@ -63,7 +66,7 @@ class ArticlesController < ApplicationController
 		end
 
 		def article_params
-			params.require(:article).permit(:title, :body, :summary, :user_id, :category_id)
+			params.require(:article).permit(:title, :body, :summary, :user_id, :category_id, :tag_list)
 
 			############  Adam's Testing Below ########
 			# params.require(:article).permit(:title, :body, :summary, :user_id, :category_id, :categories)
