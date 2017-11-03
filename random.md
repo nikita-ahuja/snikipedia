@@ -1,15 +1,1 @@
-<div id="article-photo">
-            <%= image_tag("/miles_davis.jpeg", alt:"miles_davis", width: 175) %>
-      </div>
-      <div id="article-photo">
-            <%= image_tag("/louis_armstrong.jpeg", alt:"louis_armstrong", width: 175) %>
-      </div>
-      <div id="article-photo">
-            <%= image_tag("/elliott_smith.jpeg", alt:"elliott_smith", width: 175) %>
-      </div>
-      <div id="article-photo">
-            <%= image_tag("/radiohead.jpeg", alt:"radiohead", width: 175) %>
-      </div>
-      <div id="article-photo">
-            <%= image_tag("/stanley_kubrick.jpeg", alt:"stanley_kubrick", width: 175) %>
-      </div>
+<%= image_tag("https://images.fineartamerica.com/images-medium-large-5/colorful-chimp-art-monkey-business-by-sharon-cummings-sharon-cummings.jpg", alt: "sniki-icon", width: 50, height: 50) %>

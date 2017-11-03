@@ -1,2 +1,30 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div id="homepage-container">
+
+	<div class="column">
+
+		<span id="featured-article-header"><h3>Today's featured article:</h3></span>
+		<h3><%= @article.title %></h3>
+		<p><%= @article.body %></p>
+		<span id="featured-article-summary"><%= @article.summary %></span>
+
+
+	</div>
+
+	<div class="column">	
+	<%= render partial: "shared/categories_index" %>
+
+	</div>
+
+	<div class="column">
+
+		<span id="featured-article-header"><h3>Today's featured picture:</h3></span>
+
+		<div id="featured-picture">
+			<%= image_tag("/woman_with_a_mirror.jpeg", alt:"woman_with_a_mirror", width: 175) %>
+		</div>
+
+		<p>Woman with a Mirror is a painting by the Italian artist Titian. This work, dated to c. 1515, depicts an unidentified woman as she primps herself with the assistance of a servant. The painting is now in the Louvre.</p>
+
+	</div>
+
+</div>

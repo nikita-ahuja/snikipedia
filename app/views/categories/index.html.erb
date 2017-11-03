@@ -1,22 +1,5 @@
 <div class="categories-container">
 
-  <h1>Snikipedia</h1>
-  <p>The Free Encyclopedia</p>
-  <div class="central-wrapper">
-    <img class="central-logo" src="https://images.fineartamerica.com/images-medium-large-5/colorful-chimp-art-monkey-business-by-sharon-cummings-sharon-cummings.jpg" width="200" alt="Snikipedia Logo">
+  <%= render partial: "shared/categories_index" %>
 
-    <div calss="central-featured-category">
-      <% @categories.each do |category| %>
-        <h5 id="category-link-title" class="link-box"><%= link_to( category.name, category_path(category)) %></h5>
-      <%end%>
-    </div>
-
-    <%= form_tag articles_path, :method => 'get' do %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", name: nil %>
-      </p>
-    <% end %>
-
-  </div>
 </div>
