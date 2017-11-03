@@ -44,3 +44,5 @@ article_10 = Article.create(title: "Woody Allen", body: "By the mid-1960s, Allen
 
 
 articles_categories = 20.times.map { ArticleCategory.create!(article_id: rand(1..20), category_id: rand(1..5))}
+
+Article.last.update_attributes(user_id: admin.id)
