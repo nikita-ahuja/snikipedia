@@ -91,4 +91,3 @@ gem 'ckeditor', '~> 4.1'
 
 # stripe gem
 gem 'stripe'
-
