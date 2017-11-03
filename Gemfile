@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 ## MOVE dotenv TO TOP AND REQUIRE:
 # gem 'dotenv-rails', require: 'dotenv/rails-now'
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test, :production]
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
