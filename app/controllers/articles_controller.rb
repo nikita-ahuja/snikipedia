@@ -15,6 +15,8 @@ class ArticlesController < ApplicationController
 			format.html # show.html.erb
 			format.js # show.js.erb
 		end
+
+		@user = User.find_by(id: session[:user_id])
 	end
 
 	def new
