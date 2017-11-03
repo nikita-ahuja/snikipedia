@@ -24,6 +24,7 @@
 .navbar-default {
 	z-index: 1;
 	background-color: black;
+	position: relative;
 }
 
 #left-sidebar-container {
@@ -54,7 +55,8 @@
 }
 
 .sniki-icon {
-	float: left;
-	top: 0;
-	left: 50px;
+	/*margin: 10px 0 0 20px;*/
+	margin: 1% 0 0 2%;
+	position: absolute;
+	border: 1px solid black;
 }
