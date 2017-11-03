@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
 
 	def new
 		@article = Article.new
-		# binding.pry
+		binding.pry
 	end
 
 	def edit
@@ -32,6 +32,7 @@ class ArticlesController < ApplicationController
 		@article = Article.new(article_params)
 		if @article.save
 			redirect_to article_path(@article)
+			binding.pry
 		else
 			render "new"
 		end
@@ -53,6 +54,6 @@ class ArticlesController < ApplicationController
 		end
 
 		def article_params
-			params.require(:article).permit(:title, :body, :summary, :user_id, article_category_ids: [])
+			params.require(:article).permit(:title, :body, :summary, :user_id, :tag_list, article_category_ids: [])
 		end
 end
