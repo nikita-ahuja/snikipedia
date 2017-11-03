@@ -14,7 +14,6 @@ class ArticlesController < ApplicationController
     	category = Category.find_or_create_by({ name: category_string.strip })
     	@aticle.categories << category
   	end
-  	
 		if @article.save
 			redirect_to article_path(@article)
 		else

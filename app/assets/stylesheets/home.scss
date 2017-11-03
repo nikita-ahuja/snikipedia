@@ -1,3 +1,20 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.column {
+	float: left;
+	width: 33.33%;
+	text-align: center;
+	padding: 0 5% 0 5%;
+}
+
+#featured-article-header {
+	text-align: left;
+	color: gray;
+}
+
+#featured-article-summary {
+	font-size: 1em;
+}
+
+#featured-picture {
+	text-align: center;
+	padding: 5% 0 5% 0;
+}
