@@ -53,8 +53,9 @@
   <p><strong>Categories:</strong>
   <% @article.categories.each do |category| %>
     <%= link_to "#{category.name}, ", category_path(category) %>
-  <p> Tags: </p>
-  Tags: <%= raw(@article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
-  <% end %>
   </p>
+  <p>Tags:
+  <%= raw(@article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
+  </p>
+  <% end %>
 </div>
