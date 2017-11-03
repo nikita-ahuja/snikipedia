@@ -25,29 +25,8 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		############  Adam's Testing Below ########
-		# selected_categories = params[:article][:categories].reject(&:blank?)
-		# binding.pry
-		# @article = Article.find_or_create_by(article_params)
-		# binding.pry
-		#
-		# selected_categories.each do |category_string|
-		# 	binding.pry
-		# 	category = Category.find_or_create_by({ name: category_string.strip })
-		# 	@aticle.categories << category
-		# end
-		# binding.pry
-		############  Adam's Testing Above ########
-
-
-		############  ORIGINAL BELOW ########
 		@article = Article.new(article_params)
-
-		params['categories'].split(',').each do |category_string|
-    	category = Category.find_or_create_by({ name: category_string.strip })
-    	@aticle.categories << category
-  	end
-
+ 
 		if @article.save
 			redirect_to article_path(@article)
 		else
@@ -61,10 +40,6 @@ class ArticlesController < ApplicationController
 		end
 
 		def article_params
-			params.require(:article).permit(:title, :body, :summary, :user_id, :category_id)
-
-			############  Adam's Testing Below ########
-			# params.require(:article).permit(:title, :body, :summary, :user_id, :category_id, :categories)
+			params.require(:article).permit(:title, :body, :summary, :user_id, article_category_ids: [])
 		end
-
 end

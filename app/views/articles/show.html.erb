@@ -36,8 +36,12 @@
 	<hr>
 	<p><%= @article.summary %></p>
 	<p><%= raw @article.body %></p>
+  <p><strong>Categories:</strong>
+  <% @article.categories.each do |category| %>
+    <%= link_to "#{category.name}, ", category_path(category) %>
+  <% end %> 
+  </p>
 </div>
-
 
 <!-- ADAM TESTING AREA FOR UPLOADING IMAGE FOR ARTICLES. -->
 

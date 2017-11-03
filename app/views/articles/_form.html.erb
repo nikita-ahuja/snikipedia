@@ -28,7 +28,7 @@
 
     <p>
       <%#= form.input :categories, collection: Category.all, input_html: { multiple: true }, :selected => [''] %>
-      <%= form.input :categories, collection: Category.all, input_html: { multiple: true } %>
+      <%= form.input :article_category_ids, collection: Category.all, input_html: { multiple: true }, include_hidden: false %>
     </p>
 
     <% if @current_user %>
