@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20171102163447) do
     t.string "body", null: false
     t.string "summary", null: false
     t.integer "user_id", null: false
-    t.integer "category_id", null: false
     t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,6 +37,18 @@ ActiveRecord::Schema.define(version: 20171102163447) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "photos", force: :cascade do |t|

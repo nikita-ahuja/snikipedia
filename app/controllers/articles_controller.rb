@@ -10,8 +10,10 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
-		@article_category = Article_c
-
+		params['categories'].split(',').each do |category_string|
+    	category = Category.find_or_create_by({ name: category_string.strip })
+    	@aticle.categories << category
+  	end
 		if @article.save
 			redirect_to article_path(@article)
 		else

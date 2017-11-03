@@ -83,5 +83,12 @@ gem 'autoprefixer-rails'
 # gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'font-awesome-sass', '~> 4.7.0'
 
+gem 'simple_form', '~> 3.2'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'ckeditor', '~> 4.1'
+
+
 # stripe gem
 gem 'stripe'
+
