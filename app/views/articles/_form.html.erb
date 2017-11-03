@@ -26,14 +26,14 @@
       <%= form.input :body, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}} %>
     </p>
 
+      <p>
+      <%= form.label :tag_list, "Tags (separated by commas)" %><br />
+      <%= form.text_field :tag_list %>
+     </p>
+
     <p>
       <%#= form.input :categories, collection: Category.all, input_html: { multiple: true }, :selected => [''] %>
       <%= form.input :article_category_ids, collection: Category.all, input_html: { multiple: true }, include_hidden: false %>
-    </p>
-
-    <p>
-      <%= form.label :tag_list, "Tags (separated by commas)" %><br />
-      <%= form.text_field :tag_list %>
     </p>
 
     <% if @current_user %>

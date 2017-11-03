@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
-	before_action :set_article, only: [:show, :edit, :update, :destroy]
+	before_action :set_article, only: [:edit, :update, :destroy]
+	# before_action :set_article, only: :show
 	skip_before_action :require_login, only: [:index, :show]
+	require "wikipedia"
 
 
 	def index
@@ -10,19 +12,28 @@ class ArticlesController < ApplicationController
 
 	def show
 		logged_in?
+		if params[:search]
+			@search = Wikipedia.find(params[:search])
+			@article = Article.new(title: @search.title, body: @search.text, summary: @search.summary, user_id: 1, status: "pending")
+		else
+			@article = Article.find(params[:id])
+			respond_to do |format|
+				format.html # show.html.erb
+				format.js # show.js.erb
+			end
 		# @article = Article.find(params[:id])
 		respond_to do |format|
 			format.html # show.html.erb
 			format.js # show.js.erb
-			# binding.pry
 		end
 
-		@user = User.find_by(id: session[:user_id])
+			@user = User.find_by(id: session[:user_id])
+		end
 	end
 
 	def new
 		@article = Article.new
-		# binding.pry
+		binding.pry
 	end
 
 	def edit
@@ -32,6 +43,7 @@ class ArticlesController < ApplicationController
 		@article = Article.new(article_params)
 		if @article.save
 			redirect_to article_path(@article)
+			binding.pry
 		else
 			render "new"
 		end
@@ -53,6 +65,6 @@ class ArticlesController < ApplicationController
 		end
 
 		def article_params
-			params.require(:article).permit(:title, :body, :summary, :user_id, article_category_ids: [])
+			params.require(:article).permit(:title, :body, :summary, :user_id, :tag_list, article_category_ids: [])
 		end
 end
