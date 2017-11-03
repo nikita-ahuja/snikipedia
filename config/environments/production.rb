@@ -97,7 +97,7 @@ Rails.application.configure do
       bucket: ENV['AWS_BUCKET'],
       access_key_id: ENV['AWS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_KEY'],
-      s3_region: ENV['AWS_REGION'],
+      s3_region: ENV['AWS_S3_REGION'],
     }
   }
 
