@@ -26,12 +26,60 @@
     </table>
   </div>
 
+  <div class="row MainPageBGOuter">
+    <% if !user.articles %>
+    <h2 class="ArticleHeaderH2">No articles written by <%= user.username.capitalize %></h2>
+    <% else %>
+    <% @articles = user.articles %>
+    <h2 class="ArticleHeaderH2">Articles written by <%= user.username.capitalize %> (<%= @articles.count %>)</h2>
 
-  <div class="row">
+    <% @articles.each do |article| %>
+
+    <div class="row MainPageBGInner">
+      <p><b><%= link_to "#{article.title.capitalize}", article_path(article) %></b></p>
+    </div>
+    <hr>
+
+  </tr>
+  <% end %>
+
+
     <table class="table table-bordered table-hover table-striped text-nowrap">
       <thead>
         <tr>
           <th>Title</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @articles.each do |article| %>
+        <tr>
+          <td><%= link_to "#{article.title.capitalize}", article_path(article) %></td>
+          <td><%= link_to "#{article.title.capitalize}", article_path(article) %></td>
+
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+
+
+    <% end %>
+  </div>
+
+
+  <div class="row">
+
+    <table class="table table-bordered table-hover table-striped text-nowrap">
+      <thead>
+        <tr>
+          <th class="article-show">From Today's featured...</th>
+        </tr>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
         </tr>
       </thead>
 
@@ -43,6 +91,8 @@
         <% @articles.each do |article| %>
         <tr>
           <td><%= link_to "#{article.title.capitalize}", article_path(article) %></td>
+          <td><%= link_to "#{article.title.capitalize}", article_path(article) %></td>
+
         </tr>
         <% end %>
         <% end %>

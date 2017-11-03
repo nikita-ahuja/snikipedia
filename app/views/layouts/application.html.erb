@@ -9,28 +9,38 @@
   </head>
 
   <body>
-
-    <div class="">
+    <!-- MAIN NAV BAR (ALL 3 COLUMNS) -->
+    <!-- <div class=""> -->
       <%= render partial: 'shared/nav' %>
-    </div>
+    <!-- </div> -->
 
-    <div class="container-fluid outer-container" style="margin-top: 30px;">
+    <!-- MAIN CONTENT UNDER NAV BAR (ALL 3 COLUMNS) -->
+    <div id="mainContainer" class="row">
 
-
-      <div class="row">
-        <%= render partial: 'shared/flash' %>
-      </div>
-
-
-      <div id="left-sidebar-container">
+      <!-- LEFT COLUMN ONLY (1/3 WIDTH) -->
+      <div class="col-md-2" id="mw-panel">
         <%= render partial: 'shared/left_sidebar' %>
       </div>
 
-      <div id="body-container" id="main-wrapper">
-        <%= yield %>
-      </div>
+      <!-- MIDDLE COLUMNS ONLY (2/3 WIDTH) -->
+      <div id="mw-body" class="col-md-10">
 
+        <!-- FLASH NOTICE -->
+        <div class="row">
+          <%= render partial: 'shared/flash' %>
+        </div>
+
+        <!-- YIELD (HERE IS WHERE EACH VIEW ERB FROM CONTROLLERS/VIEWS WILL RENDER) -->
+        <div class="row" id="main-wrapper">
+          <%= yield %>
+        </div>
+
+      </div>
     </div>
+
+    <footer id="footer">
+
+    </footer>
 
   </body>
 </html>
