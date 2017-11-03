@@ -8,6 +8,7 @@
   <% @searched_articles.each do |a| %>
         <li><h3 id="article-link-title" class="link-box"><%= link_to( a.title, article_path(a)) %></h3></li>
           <p>Tags: <%= a.tag_list %></p>
+          <% a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
   <%end %>
 </ul>
 <% end %>

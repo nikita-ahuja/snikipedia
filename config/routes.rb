@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'profile/:id', to: 'users#show', as: 'profile'
+  get 'tags/:tag', to: 'articles#index', as: :tag
 
   # get "/users/signup", controller: "users", action: "signup"
   # get "/users/login", controller: "users", action: "login"

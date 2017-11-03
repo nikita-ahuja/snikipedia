@@ -4,7 +4,6 @@ class Article < ApplicationRecord
 	# validates :summary, presence: true
 	# validates :user_id, presence: true
 	# validates :category_id, presence: true
-  # attr_accessor :tag_list
   acts_as_taggable
 
 	# has_many :article_tags
