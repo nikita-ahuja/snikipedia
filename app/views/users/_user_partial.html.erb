@@ -28,29 +28,51 @@
 
 
 
-  <div id="MainPageBGOuter" class="row">
+  <div class="row" id="MainPageBGOuter">
 
     <% if !user.articles %>
-      <div id="MainPageBGInner" class="row">
+      <div class="row" id="MainPageBGInner">
         <h4 id="ArticleHeaderH2">No articles written by <%= user.username.capitalize %></h4>
       </div>
 
     <% else %>
-      <div id="MainPageBGInner" class="row">
-      <% @articles = user.articles %>
-      <h4 id="ArticleHeaderH2">Articles written by <%= user.username.capitalize %> (<%= @articles.count %>)</h4>
+      <div class="row">
+        <% @articles = user.articles %>
+        <h4 id="ArticleHeaderH2">Articles written by <%= user.username.capitalize %> (<%= @articles.count %>)</h4>
 
-      <% @articles.each do |article| %>
-      <div class="">
-        <h4><%= link_to "#{article.title.capitalize}", article_path(article) %></h4>
-        <p><%= link_to "#{article.summary.capitalize}", article_path(article) %> <%= link_to "#{article.body}", article_path(article) %></p>
+        <% @articles.each do |article| %>
+        <br>
+        <div class="row" id="MainPageBGInner">
+
+          <div class="row">
+            <p><em><b><%= link_to "#{article.title.capitalize}", article_path(article) %></b></em> <%= article.summary.truncate(100) %> <%= article.body.truncate(400) %></p>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-3">
+              <p><em>Written by</em> <%= link_to "#{article.user.username.capitalize}", user_path(article.user) %> on <%= article.updated_at.strftime('%x')%> </p>
+            </div>
+
+            <div class="col-md-4">
+              <p><em>Tags</em> <%= link_to "#{article.tag_list}", user_path(article.user) %></p>
+            </div>
+
+            <div class="col-md-4">
+              <p><em>Categories</em> <%= link_to "#{article.user.username.capitalize}", user_path(article.user) %></p>
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+
+        <% end %>
       </div>
-      <hr>
-      <% end %>
 
-    </div>
     <% end %>
-
 
   </div>
 
