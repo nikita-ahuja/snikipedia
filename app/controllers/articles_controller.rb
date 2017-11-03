@@ -34,6 +34,16 @@ class ArticlesController < ApplicationController
 		end
 	end
 
+	def update
+    if @article.update_attributes(article_params)
+      flash[:notice] = "Successfully updated article!"
+     	redirect_to article_path(@article)
+    else
+      flash[:alert] = "Error updating article!"
+      render "edit"
+    end
+  end
+
 	private
 		def set_article
 			@article = Article.find(params[:id])
