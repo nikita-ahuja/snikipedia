@@ -7,7 +7,11 @@ class ArticlesController < ApplicationController
 
 	def index
 		logged_in?
-		@searched_articles = Article.search(params[:search])
+		if params[:tag]
+    	@tagged_articles = Article.tagged_with(params[:tag])
+    else
+			@searched_articles = Article.search(params[:search])
+		end
 	end
 
 	def show
