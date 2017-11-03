@@ -33,7 +33,6 @@ class ArticlesController < ApplicationController
 
 	def new
 		@article = Article.new
-		binding.pry
 	end
 
 	def edit
@@ -43,7 +42,6 @@ class ArticlesController < ApplicationController
 		@article = Article.new(article_params)
 		if @article.save
 			redirect_to article_path(@article)
-			binding.pry
 		else
 			render "new"
 		end
