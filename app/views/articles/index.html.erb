@@ -11,4 +11,11 @@
           Tags: <%= raw(a.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
   <%end %>
 </ul>
+<% elsif @tagged_articles %>
+<ul>
+  <% @tagged_articles.each do |b| %>
+  <li><h3 id="article-link-title" class="link-box"><%= link_to( b.title, article_path(b)) %></h3></li>
+  Tags: <%= raw(b.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
+  <%end %>
+  </ul>
 <% end %>

@@ -1,6 +1,16 @@
 <div id="article-sidebar">
 
-
+	<% if @wiki_photos %>
+		<div id="article-photo">
+			<%= image_tag(@wiki_photos.first, alt:"wiki_1", width: 175) %>
+		</div>
+		<div id="article-photo">
+			<%= image_tag(@wiki_photos.second, alt:"wiki_2", width: 175) %>
+		</div>
+		<div id="article-photo">
+			<%= image_tag(@wiki_photos.third, alt:"wiki_1", width: 175) %>
+		</div>
+	<% end %>
 	<% photos = @article.photos %>
 	<% if photos %>
 		<% photos.each do |photo| %>
@@ -12,24 +22,6 @@
 			</div>
 		<% end %>
 	<% end %>
-	<div id="article-photo">
-		<%= image_tag("/pablo_picasso.jpeg", alt:"pablo_picasso", width: 175) %>
-	</div>
-	<div id="article-photo">
-    <%= image_tag("/miles_davis.jpeg", alt:"miles_davis", width: 175) %>
-  	</div>
-  	<div id="article-photo">
-        <%= image_tag("/louis_armstrong.jpeg", alt:"louis_armstrong", width: 175) %>
-  	</div>
-  	<div id="article-photo">
-        <%= image_tag("/elliott_smith.jpeg", alt:"elliott_smith", width: 175) %>
-  	</div>
-  	<div id="article-photo">
-        <%= image_tag("/radiohead.jpeg", alt:"radiohead", width: 175) %>
-  	</div>
-  	<div id="article-photo">
-        <%= image_tag("/stanley_kubrick.jpeg", alt:"stanley_kubrick", width: 175) %>
-  	</div>
 
   	<div id="article-sidebar-text">
   	<!-- ONLY ADMIN AND ARTICLE AUTHOR CAN UPLOAD IMAGES -->
@@ -53,9 +45,12 @@
   <p><strong>Categories:</strong>
   <% @article.categories.each do |category| %>
     <%= link_to "#{category.name}, ", category_path(category) %>
+  <% end %></p>
+  <strong>Tags:</strong>
   </p>
-  <p>Tags:
-  <%= raw(@article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
-  </p>
+  <% if @article.tag_list == nil%>
+    <%= puts "There are no tags on this post" %>
+  <% else %>
+    <%= raw(@article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
   <% end %>
 </div>

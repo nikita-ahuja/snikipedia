@@ -7,13 +7,18 @@ class ArticlesController < ApplicationController
 
 	def index
 		logged_in?
-		@searched_articles = Article.search(params[:search])
+		if params[:tag]
+    	@tagged_articles = Article.tagged_with(params[:tag])
+    else
+			@searched_articles = Article.search(params[:search])
+		end
 	end
 
 	def show
 		logged_in?
 		if params[:search]
 			@search = Wikipedia.find(params[:search])
+			@wiki_photos = @search.image_urls
 			@article = Article.new(title: @search.title, body: @search.text, summary: @search.summary, user_id: 1, status: "pending")
 		else
 			@article = Article.find(params[:id])
