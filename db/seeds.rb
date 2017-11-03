@@ -8,6 +8,8 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+admin = User.create(username: 'admin', email: 'admin', password: 'admin', role: 'admin')
+
 users = 25.times.map do
   User.create!( :username  => Faker::Zelda.character,
                 :email      => Faker::Internet.email,

@@ -4,18 +4,29 @@
 <!-- MODAL BUTTONS -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadImageModal">Upload Image</button>
 
-<!-- LOGIN MODAL -->
-<div class="row modal fade" id="uploadImageModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div style="background: yellow; padding: 20px;" class="modal-dialog" role="document">
-    <div style="background: blue;" class="modal-content">
-      <h3>Upload an Image</h3>
-      <hr>
 
-      <div class="modal-body">
 
-        <%= render 'photos/upload_image_form', photo: Photo.new %>
+
+<!-- Modal -->
+  <div class="modal fade" id="uploadImageModal" role="dialog">
+    <div class="row modal-dialog">
+
+      <!-- Modal content-->
+      <div class="col-md-6 modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Upload Photos</h4>
+        </div>
+
+        <!-- Modal body-->
+        <div class="modal-body">
+
+
+          <%= render 'photos/upload_image_form', photo: Photo.new %>
+
+        </div>
+
       </div>
 
     </div>
   </div>
-</div>

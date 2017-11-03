@@ -27,12 +27,17 @@
     </p>
 
     <p>
-      <%= form.input :categories, collection: Category.all, input_html: { multiple: true }, :selected => [''] %>
+      <%#= form.input :categories, collection: Category.all, input_html: { multiple: true }, :selected => [''] %>
+      <%= form.input :categories, collection: Category.all, input_html: { multiple: true } %>
     </p>
 
+    <% if @current_user %>
+      <%= form.hidden_field :user_id, :value => @current_user.id %>
+    <% else %>
     <p>
       <%= form.input :user_id %>
     </p>
+    <% end %>
 
     <p>
       <%= form.submit %>
