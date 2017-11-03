@@ -1,41 +1,74 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:new, :create]
 
   def index
+    @users = User.all
   end
 
-  def signup
+  def show
+    @user = User.find(params[:id])
+    # @posts=Post.all # needed for sidebar, probably better to use a cell for this
+    respond_to do |format|
+      # format.html { redirect_to @user, notice: 'Welcome!' }
+      # format.json { render :show, status: :ok, location: @user }
+      format.html # show.html.erb
+      format.js # show.js.erb
+    end
+
+  end
+
+  def new
     @user = User.new
+  end
+
+  def edit
   end
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      redirect_to "/users/login"
+
+    respond_to do |format|
+      if @user.save
+        session[:user_id] = @user.id
+        format.html { redirect_to @user, notice: 'Thank you for signing up!' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        # render :new
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
+
+  def destroy
+    if @user == @current_user
+      session[:user_id] = nil
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to root_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     else
-      render "signup"
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
-  def login
-  end
-
-  def profile
-    @user = User.find_by(username: params[:user][:username])
-    if @user.password == params[:user][:password]
-      session[:user_id] = @user.id
-      redirect_to @user
-    else
-      render "login"
-    end
-  end
-
-  def show
-    @user = User.find_by(id: session[:user_id])
-  end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def user_params
-    params.require(:user).permit(:email, :username, :password)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
 end

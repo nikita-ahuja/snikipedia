@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="sniki-icon central-logo">
     <a href="/"><img class="central-logo" src="https://images.fineartamerica.com/images-medium-large-5/colorful-chimp-art-monkey-business-by-sharon-cummings-sharon-cummings.jpg" width="60" alt="Snikipedia Logo"></a>
-  </div> 
+  </div>
     <div class="container">
       <div class="navbar-header">
 
@@ -24,18 +24,17 @@
           <li><%= link_to 'Photos', photos_path %></li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/login">LogIn</a></li>
-          <li><a href="/users/signup">Register</a></li>
-          <%# if logged_in? %>
-            <!-- <li><%#= link_to 'Logout', logout_path %></li> -->
-            <!-- <li><%#= link_to @current_user.username.capitalize, @current_user, remote: true %></li> -->
-          <%# else %>
-            <%#= render partial: 'layouts/modal' %>
-            <!-- <li><%#= link_to "Sign Up", signup_path %></li> -->
-            <!-- <li><%#= link_to "Log In", login_path %></li> -->
-          <%# end %>
-        </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li><%= link_to 'Logout', logout_path %></li>
+          <li><%= link_to @current_user.username.capitalize, user_path(@current_user) %></li>
+
+        <% else %>
+          <%#= render partial: 'layouts/modal' %>
+          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Log In", login_path %></li>
+        <% end %>
+      </ul>
 
       </div><!--/.nav-collapse -->
 

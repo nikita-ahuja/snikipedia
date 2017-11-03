@@ -1,15 +1,19 @@
 class PhotosController < ApplicationController
-  # before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
+
 
   # GET /photos
   # GET /photos.json
   def index
+    logged_in?
     @photos = Photo.order('created_at')
   end
 
   # GET /photos/1
   # GET /photos/1.json
   def show
+    logged_in?
     respond_to do |format|
       format.html # show.html.erb
       format.js # show.js.erb
@@ -31,7 +35,8 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     if @photo.save
       flash[:success] = "The photo was added!"
-      redirect_to photos_path
+      redirect_to user_path(@current_user)
+      # redirect_to photos_path
     else
       render 'new'
     end
@@ -49,21 +54,19 @@ class PhotosController < ApplicationController
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'The photo was destroyed.' }
+      format.html { redirect_to user_path(@current_user), notice: 'The photo was destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-
-    # def set_photo
-    #   @photo = Photo.find(params[:id])
-    # end
+    def set_photo
+      @photo = Photo.find(params[:id])
+    end
 
     def photo_params
       # params.require(:photo).permit(:image, :title)
-      params.require(:photo).permit(:image, :title, :user_id, :article_id )
+      params.require(:photo).permit(:image, :title, :user_id, :article_id)
     end
 
 end
