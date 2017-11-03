@@ -1,6 +1,16 @@
 <div id="article-sidebar">
 
-
+	<% if @wiki_photos %>
+		<div id="article-photo">
+			<%= image_tag(@wiki_photos.first, alt:"wiki_1", width: 175) %>
+		</div>
+		<div id="article-photo">
+			<%= image_tag(@wiki_photos.second, alt:"wiki_2", width: 175) %>
+		</div>
+		<div id="article-photo">
+			<%= image_tag(@wiki_photos.third, alt:"wiki_1", width: 175) %>
+		</div>
+	<% end %>
 	<% photos = @article.photos %>
 	<% if photos %>
 		<% photos.each do |photo| %>

@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 		logged_in?
 		if params[:search]
 			@search = Wikipedia.find(params[:search])
+			@wiki_photos = @search.image_urls
 			@article = Article.new(title: @search.title, body: @search.text, summary: @search.summary, user_id: 1, status: "pending")
 		else
 			@article = Article.find(params[:id])
