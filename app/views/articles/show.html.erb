@@ -63,9 +63,12 @@
   <p><strong>Categories:</strong>
   <% @article.categories.each do |category| %>
     <%= link_to "#{category.name}, ", category_path(category) %>
+  <% end %></p>
+  <strong>Tags:</strong>
   </p>
-  <p>Tags:
-  <%= raw(@article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
-  </p>
+  <% if @article.tag_list == nil%>
+    <%= puts "There are no tags on this post" %>
+  <% else %>
+    <%= raw(@article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
   <% end %>
 </div>
