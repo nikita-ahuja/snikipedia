@@ -9,12 +9,9 @@
       <%end%>
     </div>
 
-    <%= form_tag articles_path, :method => 'get' do %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search Snikipedia", name: nil %>
-      </p>
-    <% end %>
+    <!-- SEARCH ARTICLES FORM -->
+    <%= render "articles/search_form" %>
+
     <br>
 
   </div>

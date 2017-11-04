@@ -1,0 +1,56 @@
+<div id="article-sidebar">
+
+	<% if @wiki_photos %>
+		<div id="article-photo">
+			<%= image_tag(@wiki_photos.first, alt:"wiki_1", width: 175) %>
+		</div>
+		<div id="article-photo">
+			<%= image_tag(@wiki_photos.second, alt:"wiki_2", width: 175) %>
+		</div>
+		<div id="article-photo">
+			<%= image_tag(@wiki_photos.third, alt:"wiki_1", width: 175) %>
+		</div>
+	<% end %>
+	<% photos = @article.photos %>
+	<% if photos %>
+		<% photos.each do |photo| %>
+			<div id="article-photo">
+				<%= link_to image_tag(photo.image.url(:thumb)), photo.image.url, target: '_blank', width: 175 %><br>
+				<% if @user && (@user == photo.user || @user.role == "admin") %>
+					<%= link_to 'Remove', photo_path(photo), remote: true, class: 'btn btn-danger', method: :delete %>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
+
+  	<div id="article-sidebar-text">
+  	<!-- ONLY ADMIN AND ARTICLE AUTHOR CAN UPLOAD IMAGES -->
+	<% if @user && (@user == @article.user || @user.role == "admin") %>
+		<%= render partial: 'photos/upload_image_modal', article: @article %>
+	<% end %>
+
+		<p>article_sidebar</p>
+		<p><strong>born:</strong> some info</p>
+		<p><strong>died:</strong> some info</p>
+	</div>
+
+</div>
+
+<div id="article-container">
+	<h1><%= @article.title %></h1>
+	<p id="plug">From Snikipedia, the most awesome encyclopedia evaaaa</p>
+	<hr>
+	<p><%= @article.summary %></p>
+	<p><%= raw @article.body %></p>
+  <p><strong>Categories:</strong>
+  <% @article.categories.each do |category| %>
+    <%= link_to "#{category.name}, ", category_path(category) %>
+  <% end %></p>
+  <strong>Tags:</strong>
+  </p>
+  <% if @article.tag_list == nil%>
+    <%= puts "There are no tags on this post" %>
+  <% else %>
+    <%= raw(@article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
+  <% end %>
+</div>

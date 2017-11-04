@@ -1,0 +1,13 @@
+<div class="row">
+
+  <% if @articles %>
+    <% @articles.each do |article| %>
+    <p><%= article.title %></p>
+    <hr>
+    <% end %>
+  <% else %>
+  <p>No Articles.</p>
+  <% end %>
+
+
+</div>
