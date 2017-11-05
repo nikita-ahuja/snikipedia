@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include
   protect_from_forgery with: :exception
   before_action :require_login
   before_action :logged_in?
@@ -18,4 +19,5 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :logged_in?
+
 end

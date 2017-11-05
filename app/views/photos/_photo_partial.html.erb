@@ -6,8 +6,8 @@
     <h4 class="media-heading"><%= photo.title %></h4>
 
     <!-- ONLY ADMIN AND ARTICLE AUTHOR CAN REMOVE IMAGES -->
-    <%# if @user && (@user == photo.user || @user.role == 'admin') %>
+    <% if @current_user && (@current_user == photo.user || @current_user.role == 'admin') %>
     <%= link_to 'Remove', photo_path(photo), remote: true, class: 'btn btn-danger', method: :delete %>
-    <%# end %>
+    <% end %>
   </div>
 </div>

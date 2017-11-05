@@ -26,6 +26,8 @@
 
   	<div id="article-sidebar-text">
   	<!-- ONLY ADMIN AND ARTICLE AUTHOR CAN UPLOAD IMAGES -->
+
+		<!-- authorized_user(author) -->
 	<% if @current_user && (@current_user == @article.user || @current_user.role == "admin") %>
 		<%= render partial: 'photos/upload_image_modal', article: @article %>
 	<% end %>

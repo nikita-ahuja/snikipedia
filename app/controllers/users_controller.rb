@@ -40,6 +40,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    # binding.pry
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'Profile was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { redirect_to edit_user_path(@user), notice: 'Error Updating.  Please confirm or change password.' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+        # format.js { redirect_to edit_user_path(@user), notice: 'Error Updating.  Please confirm or change password.' }
+        # format.html { render :edit }
+      end
+    end
+  end
+
   def destroy
     if @user == @current_user
       session[:user_id] = nil
