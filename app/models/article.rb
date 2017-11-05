@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Article < ApplicationRecord
 	# validates :title, presence: true
 	# validates :body, presence: true
@@ -29,6 +31,11 @@ class Article < ApplicationRecord
       where(nil)
     end
   end
+
+  # def picture_from_url(url)
+  #   self.photos << open(url)
+  #   self.photos <<
+  # end
 
 
   ########################

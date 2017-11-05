@@ -79,6 +79,7 @@ gem 'autoprefixer-rails'
 # gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'pg_search'
+gem 'mechanize', '~> 2.7', '>= 2.7.5'
 
 
 
