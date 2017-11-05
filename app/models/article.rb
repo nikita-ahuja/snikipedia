@@ -13,27 +13,30 @@ class Article < ApplicationRecord
   has_many :categories, through: :article_categories
 	has_many :photos
 
-  # WITH PG SEARCH GEM
+
+  ########################
+
+  # SEARCH WITH PG SEARCH GEM
   include PgSearch
-  pg_search_scope :search, against: [:title, :summary],
-  using: {tsearch: {dictionary: "english"}},
-  associated_against: {user: :username, categories: [:name, :description]}
+  pg_search_scope :search_any_word, against: [:title, :summary],
+  using: {tsearch: {dictionary: "english", any_word: :true}},
+  associated_against: {user: :username, categories: [:name, :description], tags: :name, photos: :title}
 
   def self.text_search(query)
     if query.present?
-      search(query)
+      search_any_word(query)
     else
       where(nil)
     end
   end
 
+
   ########################
 
-  # WITHOUT GEM
+  # SEARCH WITHOUT GEM
   # def self.text_search(query)
   #   if query.present?
-  #     # where("name @@ :q or content @@ :q", q: query)
-  #     # where("title @@ :q or summary @@ :q", q: "%#{query}%")
+  #     # where("title ilike :q or summary ilike :q", q: "%#{query}%")
   #     where("title @@ :q or summary @@ :q", q: "%#{query}%")
   #   else
   #     where(nil)
@@ -42,7 +45,7 @@ class Article < ApplicationRecord
 
   ########################
 
-  # ORIGINAL SEARCH
+  # SEARCH ORIGINAL
   # def self.search(search)
   #   where("title LIKE ? OR body LIKE ? OR summary LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
   # end
