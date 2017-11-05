@@ -6,7 +6,8 @@ class ArticlesController < ApplicationController
 
 
 	def index
-		binding.pry
+		# @articles = Article.all
+		@articles = Article.text_search(params[:query])
 
 ############
 		# if params[:tag]

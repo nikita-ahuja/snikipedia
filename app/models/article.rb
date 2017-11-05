@@ -1,5 +1,4 @@
 class Article < ApplicationRecord
-  include Filterable
 	# validates :title, presence: true
 	# validates :body, presence: true
 	# validates :summary, presence: true
@@ -14,17 +13,36 @@ class Article < ApplicationRecord
   has_many :categories, through: :article_categories
 	has_many :photos
 
-  # scope :status, -> (status) { where status: status }
-  # scope :location, -> (location_id) { where location_id: location_id }
-  # scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
-  scope :title, -> (title) { where("title like ?", "%#{title}%") }
-  scope :body, -> (body) { where("body like ?", "%#{body}%") }
-  scope :summary, -> (summary) { where("summary like ?", "%#{summary}%") }
+  # WITH PG SEARCH GEM
+  include PgSearch
+  pg_search_scope :search, against: [:title, :summary],
+  using: {tsearch: {dictionary: "english"}},
+  associated_against: {user: :username, categories: [:name, :description]}
 
+  def self.text_search(query)
+    if query.present?
+      search(query)
+    else
+      where(nil)
+    end
+  end
 
+  ########################
 
+  # WITHOUT GEM
+  # def self.text_search(query)
+  #   if query.present?
+  #     # where("name @@ :q or content @@ :q", q: query)
+  #     # where("title @@ :q or summary @@ :q", q: "%#{query}%")
+  #     where("title @@ :q or summary @@ :q", q: "%#{query}%")
+  #   else
+  #     where(nil)
+  #   end
+  # end
 
+  ########################
 
+  # ORIGINAL SEARCH
   # def self.search(search)
   #   where("title LIKE ? OR body LIKE ? OR summary LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
   # end
