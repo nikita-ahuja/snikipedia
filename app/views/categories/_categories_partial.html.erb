@@ -3,15 +3,22 @@
   <div class="central-wrapper">
     <img class="central-logo" src="https://images.fineartamerica.com/images-medium-large-5/colorful-chimp-art-monkey-business-by-sharon-cummings-sharon-cummings.jpg" width="200" alt="Snikipedia Logo">
 
-    <div class="central-featured-category">
+    <div class="row central-featured-category">
       <% @categories.each do |category| %>
         <h5 id="category-link-title" class="link-box"><%= link_to( category.name, category_path(category)) %></h5>
       <%end%>
     </div>
 
     <!-- SEARCH ARTICLES FORM -->
-    <%= render "articles/search_form" %>
+    <%#= render "articles/search_form" %>
 
-    <br>
+    <div class='row form-group'>
+      <%= form_tag articles_path, method: :get, class: 'form-inline' do %>
+        <p>
+          <%= text_field_tag :query, params[:query] %>
+          <%= submit_tag "Search", name: nil %>
+        </p>
+      <% end %>
+    </div>
 
   </div>

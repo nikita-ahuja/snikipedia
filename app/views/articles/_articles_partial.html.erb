@@ -1,17 +1,42 @@
-<h1>Articles</h1>
-<%= form_tag articles_path, method: :get do %>
-  <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
-<% end %>
 
-<div id="articles">
-<% @articles.each do |article| %>
-  <hr>
-  <h4><%= link_to article.title, article %></h4>
-  <div class="categories"><p>About <b><%= article.categories.map(&:name).map(&:inspect).join(', ') %></b>, by <em><%= article.user.username %></em> on <em><%= article.updated_at.strftime('%b %d, %Y') %></em></p></div>
-  <div class="summary"><p><%= article.summary.truncate(365) %></p></div>
-  <div class="tags">Tags: <%= raw(article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></div>
-<% end %>
+
+<div class="row" id="MainPageBGOuter">
+
+  <div id="ArticleHeaderH2" class="row">
+
+    <div class="col-md-7">
+      <h4><b>Articles</b></h4>
+    </div>
+
+    <!-- SEARCH ARTICLES FORM -->
+    <%#= render "articles/search_form" %>
+
+    <div class='col-md-5' style="margin-top: 5px; margin-bottom: 0;">
+      <%= form_tag articles_path, method: :get, class: 'form-inline' do %>
+        <p>
+          <%= text_field_tag :query, params[:query] %>
+          <%= submit_tag "Search Articles", name: nil %>
+        </p>
+      <% end %>
+    </div>
+
+  </div>
+
+
+
+	<div class="row" id="MainPageBGInner">
+
+    <div id="articles">
+    <% @articles.each do |article| %>
+      <hr>
+      <!-- <h4><%#= link_to article.title, article %></h4> -->
+      <t4><%= link_to "#{article.title.capitalize}", article, remote: true %></t4>
+      <div class="categories"><p>About <b><%= article.categories.map(&:name).map(&:inspect).join(', ') %></b>, by <em><%= article.user.username %></em> on <em><%= article.updated_at.strftime('%b %d, %Y') %></em></p></div>
+      <div class="summary"><p><%= article.summary.truncate(365) %></p></div>
+      <div class="tags">Tags: <%= raw(article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></div>
+    <% end %>
+    </div>
+
+  </div>
+
 </div>

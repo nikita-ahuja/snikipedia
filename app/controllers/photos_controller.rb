@@ -2,18 +2,15 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login, only: [:index, :show]
 
-
   # GET /photos
   # GET /photos.json
   def index
-    logged_in?
     @photos = Photo.order('created_at')
   end
 
   # GET /photos/1
   # GET /photos/1.json
   def show
-    logged_in?
     respond_to do |format|
       format.html # show.html.erb
       format.js # show.js.erb
