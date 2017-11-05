@@ -34,14 +34,11 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'Thank you for signing up!' }
         format.json { render :show, status: :created, location: @user }
       else
-        # render :new
-        format.html { render :new }
+        format.html { redirect_to signup_path, notice: "Invalid Registration Information.  Please try again." }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-
   end
-
 
   def destroy
     if @user == @current_user

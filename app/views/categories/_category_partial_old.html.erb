@@ -1,0 +1,24 @@
+<div class="categories-container">
+
+  <div class="row">
+    <h1><%= @category.name %></h1>
+    <p><%= @category.description %></p>
+  </div>
+
+
+<% @articles.each do |article| %>
+<div class="square">
+    <div class="categories-content">
+        <div class="categories-table">
+            <div class="table-cell">
+                <div class="article-look">
+                  <h2><%= link_to article.title, article_path(article) %></h2>
+                  <p><%= article.summary %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+
+</div>

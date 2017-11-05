@@ -15,6 +15,7 @@
  *= require_self
  */
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
@@ -38,6 +39,33 @@ html {
 body {
 	background: #f6f6f6;
 }
+
+/////////////
+
+.wiki-font {
+  font-family: 'EB Garamond', serif;
+}
+
+.wiki-font::first-letter {
+  font-size: 120%;
+}
+
+.wiki-font:nth-letter(even)  {
+  font-size: 120%;
+}
+
+
+//
+// .wiki-font::after{
+//  content:"A";
+//  font-size: 120%;
+//  color: red;
+//  background: blue;
+// }
+
+
+
+
 
 #mainContainer {
 	margin-top: 30px;
@@ -68,6 +96,8 @@ div#mw-panel {
 
 // YIELD (HERE IS WHERE EACH VIEW ERB FROM CONTROLLERS/VIEWS WILL RENDER)
 #main-wrapper {
+  padding-top: 0px;
+  margin-top: 0px;
 	// padding: 1%;
 	// margin-right: 1%;
 	// border: 1px solid #a7d7f9;
