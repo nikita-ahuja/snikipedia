@@ -1,7 +1,4 @@
 <div class="container">
-  <div class="erb_header">
-    <h3><%= user.username.capitalize %> Settings</h3>
-  </div>
 
   <div class="row">
     <table class="table table-bordered table-hover table-striped text-nowrap">
@@ -29,71 +26,18 @@
     </table>
   </div>
 
+  <h3>Content by <%= user.username.capitalize %></h3>
 
 
-
-  <div class="row" id="MainPageBGOuter">
-
-    <% if !user.articles %>
-    <div class="row" id="MainPageBGInner">
-      <h4 id="ArticleHeaderH2">No articles written by <%= user.username.capitalize %></h4>
-    </div>
-
-    <% else %>
-    <div class="row">
-      <% @articles = user.articles %>
-      <h4 id="ArticleHeaderH2">Articles written by <%= user.username.capitalize %> (<%= @articles.count %>)</h4>
-
-      <% @articles.each do |article| %>
-      <br>
-      <div class="row" id="MainPageBGInner">
-
-        <div class="row">
-          <p><em><b><%= link_to "#{article.title.capitalize}", article_path(article) %></b></em> <%= article.summary.truncate(100) %> <%= article.body.truncate(400) %></p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-md-3">
-            <p><em>Written by</em> <%= link_to "#{article.user.username.capitalize}", user_path(article.user) %> on <%= article.updated_at.strftime('%x')%> </p>
-          </div>
-
-          <div class="col-md-4">
-            <p><em>Tags</em> <%= link_to "#{article.tag_list}", user_path(article.user) %></p>
-          </div>
-
-          <div class="col-md-4">
-            <p><em>Categories</em> <%= link_to "#{article.user.username.capitalize}", user_path(article.user) %></p>
-          </div>
-
-        </div>
+  <% @articles = user.articles %>
+  <%= render 'articles/articles_partial', articles: @articles %>
 
 
-      </div>
-
-
-
-      <% end %>
-    </div>
-
-    <% end %>
-
-  </div>
-
-
-
-
-
-
-  <% if user.photos %>
   <% @photos = user.photos %>
-  <h3>My Photos: <%= @photos.count %></h3>
+  <h3>Photos: <%= @photos.count %></h3>
 
   <!-- PARTIAL LINK TO PHOTOS/INDEX (VIEW ALL) -->
   <%= render 'photos/photos_partial', photos: user.photos %>
-  <% else %>
-  <h3>You haven't uploaded any photos yet.</h3>
-  <p>Let's get started - It's simple!  Post an article, then add your photos!</p>
-  <% end %>
+
 
 </div>

@@ -6,13 +6,19 @@ class ArticlesController < ApplicationController
 
 	def index
 		@articles = Article.text_search(params[:query])
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
+
 	end
 
 	def show
 		respond_to do |format|
-			format.html # show.html.erb
-			format.js # show.js.erb
-		end
+      format.html
+      format.js
+    end
 	end
 
 	#

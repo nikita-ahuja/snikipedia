@@ -6,14 +6,20 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = Photo.order('created_at')
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   # GET /photos/1
   # GET /photos/1.json
   def show
     respond_to do |format|
-      format.html # show.html.erb
-      format.js # show.js.erb
+      format.html
+      format.js
     end
   end
 

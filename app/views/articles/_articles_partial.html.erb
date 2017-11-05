@@ -4,20 +4,24 @@
 
   <div id="ArticleHeaderH2" class="row">
 
-    <div class="col-md-7">
+    <div class="col-md-6">
       <h4><b>Articles</b></h4>
     </div>
 
     <!-- SEARCH ARTICLES FORM -->
     <%#= render "articles/search_form" %>
 
-    <div class='col-md-5' style="margin-top: 5px; margin-bottom: 0;">
+    <div class='col-md-4' style="margin-top: 5px; margin-bottom: 0;">
       <%= form_tag articles_path, method: :get, class: 'form-inline' do %>
         <p>
           <%= text_field_tag :query, params[:query] %>
           <%= submit_tag "Search Articles", name: nil %>
         </p>
       <% end %>
+    </div>
+
+    <div class="col-md-2" style="margin-top: 5px; margin-bottom: 0;">
+      <%= link_to 'Post New Article', new_article_path %>
     </div>
 
   </div>

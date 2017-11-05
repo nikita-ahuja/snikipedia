@@ -1,7 +1,2 @@
-<!-- PARTIAL LINK TO RESTAURANT/INDEX (VIEW ALL) -->
-<% if @article %>
-  <h3>Article Details</h3>
-  <%= render 'article_partial', article: @article %>
-<% else %>
-  <h3>No Article Details</h3>
-<% end %>
+<!-- PARTIAL LINK TO ARTICLE/PARTIAL (SHOW ARTICLE - DETAILS) -->
+<%= render 'articles/article_partial', article: @article %>
