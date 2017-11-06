@@ -21,8 +21,9 @@ class ArticlesController < ApplicationController
 
 	## TRYING TO IMPLEMENT WIKI-SEARCH RESULTS INTO REGULAR RESULTS.
 	def index
+		# binding.pry
 
-		if params[:query]
+		if params[:query].present?
 			wiki_api_result = Wikipedia.find(params[:query])
 			wiki_article_hash = {title: wiki_api_result.title,
 				body: wiki_api_result.text,
