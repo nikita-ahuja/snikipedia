@@ -1,24 +1,27 @@
-  <h1 class="wiki-font">SNIKIPEDIA</h1>
-  <p>The Free Encyclopedia</p>
-  <div class="central-wrapper">
-    <img class="central-logo" src="https://images.fineartamerica.com/images-medium-large-5/colorful-chimp-art-monkey-business-by-sharon-cummings-sharon-cummings.jpg" width="200" alt="Snikipedia Logo">
+<div class="central-wrapper">
+  <div class="row text-center">
+    <h1 class="wiki-font">SNIKIPEDIA</h1>
+    <p class="wiki-font">THE AWESOME ENCYCLOPEDIA</p>
+  </div>
 
-    <div class="row central-featured-category">
-      <% @categories.each do |category| %>
-        <h5 id="category-link-title" class="link-box"><%= link_to( category.name, category_path(category)) %></h5>
-      <%end%>
-    </div>
+  <div class="row logo-div text-center">
+    <%= link_to image_tag("wiki_logo_chimp.jpg", size: "200x200", alt: "Snikipedia Logo", class: "img-circle chimp-logo"), root_url %>
+  </div>
 
-    <!-- SEARCH ARTICLES FORM -->
-    <%#= render "articles/search_form" %>
+  <div class="row central-featured-category text-center">
+    <% @categories.each do |category| %>
 
-    <div class='row form-group'>
-      <%= form_tag articles_path, method: :get, class: 'form-inline' do %>
-        <p>
-          <%= text_field_tag :query, params[:query] %>
-          <%= submit_tag "Search", name: nil %>
-        </p>
-      <% end %>
-    </div>
+    <h4 id="category-link-title" class="link-box"><%= link_to "#{category.name.capitalize}", category, remote: true %></h4>
+
+    <%end%>
 
   </div>
+
+  <!-- SEARCH ARTICLES FORM -->
+  <%#= render "articles/search_form" %>
+
+  <div class='row form-group text-center'>
+    <%= render partial: 'articles/search_partial' %>
+  </div>
+
+</div>

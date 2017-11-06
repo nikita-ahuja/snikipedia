@@ -1,0 +1,3 @@
+<% @categories.each do |category| %>
+  <h4 id="category-link-title" class="link-box"><%= link_to( category.name, category_path(category)) %></h4>
+<%end%>

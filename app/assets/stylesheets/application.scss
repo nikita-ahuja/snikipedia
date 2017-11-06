@@ -40,6 +40,11 @@ body {
 	background: #f6f6f6;
 }
 
+.list-group-item {
+	background: #f6f6f6;
+  border: none;
+}
+
 /////////////
 
 .wiki-font {
@@ -107,16 +112,32 @@ div#mw-panel {
 	// width: 85%;
 }
 
-// #mini-text {
-// 	font-size: .65em;
-// }
+#mini-text {
+	font-size: 1em;
+}
 
-.sniki-icon {
+div.logo-div {
+  // margin-top: 45px;
+  padding: 10%;
+}
+
+.chimp-logo {
+  border: 1px solid gray;
+}
+
+img.sniki-icon {
 	/*margin: 10px 0 0 20px;*/
 	margin: 1% 0 0 2%;
 	position: absolute;
 	border: 1px solid black;
 }
+
+// .sniki-icon {
+// 	/*margin: 10px 0 0 20px;*/
+// 	margin: 1% 0 0 2%;
+// 	position: absolute;
+// 	border: 1px solid black;
+// }
 
 footer {
 	min-height: 10%;

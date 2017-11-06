@@ -10,26 +10,20 @@
   </head>
 
   <body>
-
-    <!-- LEFT COLUMN ONLY (1/3 WIDTH) -->
-    <div class="col-md-2" id="mw-panel">
-      <%= render partial: 'shared/left_sidebar' %>
-    </div>
-
-  <!-- MIDDLE COLUMNS ONLY (2/3 WIDTH) -->
-  <div class="col-md-10">
-
     <!-- MAIN NAV BAR (ALL 3 COLUMNS) -->
     <!-- <div class=""> -->
       <%= render partial: 'shared/nav' %>
     <!-- </div> -->
 
-
-
-
     <!-- MAIN CONTENT UNDER NAV BAR (ALL 3 COLUMNS) -->
     <div id="mainContainer" class="row">
 
+      <!-- LEFT COLUMN ONLY (1/3 WIDTH) -->
+      <div class="col-md-2" id="mw-panel">
+        <%= render partial: 'shared/left_sidebar' %>
+      </div>
+
+      <!-- MIDDLE COLUMNS ONLY (2/3 WIDTH) -->
       <div id="mw-body" class="col-md-10">
 
         <!-- FLASH NOTICE -->
@@ -44,8 +38,6 @@
 
       </div>
     </div>
-  </div>
-    
 
     <footer id="footer">
 

@@ -12,12 +12,7 @@
     <%#= render "articles/search_form" %>
 
     <div class='col-md-4' style="margin-top: 5px; margin-bottom: 0;">
-      <%= form_tag articles_path, method: :get, class: 'form-inline' do %>
-        <p>
-          <%= text_field_tag :query, params[:query] %>
-          <%= submit_tag "Search Articles", name: nil %>
-        </p>
-      <% end %>
+      <%= render partial: 'articles/search_partial' %>
     </div>
 
     <div class="col-md-2" style="margin-top: 5px; margin-bottom: 0;">

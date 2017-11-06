@@ -1,37 +1,24 @@
-<div id="homepage-container">
+<div id="row homepage-container">
 
 	<div class="column">
-
-		<span id="featured-article-header"><h3>Today's featured article:</h3></span>
+		<span id="featured-article-header"><h5>TODAY'S FEATURED ARTICLE</h5></span>
 		<h3><%= @article.title %></h3>
-		<p><%= @article.summary %></p>
-		<span id="featured-article-summary"><%= @article.body %></span>
+		<p><%= @article.summary.truncate(500) %></p>
+		<span id="featured-article-summary"><%= @article.body.truncate(500) %></span>
+	</div>
 
-
+	<div class="column" style="margin-top: 50px;">
+		<%= render partial: "categories/categories_partial" %>
 	</div>
 
 	<div class="column">
-	<%= render partial: "categories/categories_partial" %>
-
-	<%#= form_tag article_path(id: 1), :method => 'get' do %>
-      <p>
-        <%#= text_field_tag :search, params[:search] %>
-        <%#= submit_tag "Search Wikipedia", name: nil %>
-      </p>
-    <%# end %>
-
-	</div>
-
-	<div class="column">
-
-		<span id="featured-article-header"><h3>Today's featured picture:</h3></span>
+		<span id="featured-article-header"><h5>TODAY'S FEATURED PICTURE</h5></span>
 
 		<div id="featured-picture">
 			<%= image_tag("/woman_with_a_mirror.jpeg", alt:"woman_with_a_mirror", width: 175) %>
 		</div>
 
 		<p>Woman with a Mirror is a painting by the Italian artist Titian. This work, dated to c. 1515, depicts an unidentified woman as she primps herself with the assistance of a servant. The painting is now in the Louvre.</p>
-
 	</div>
 
 </div>

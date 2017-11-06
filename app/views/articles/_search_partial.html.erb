@@ -1,0 +1,6 @@
+<%= form_tag articles_path, method: :get, class: 'form-inline' do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search Articles", name: nil %>
+  </p>
+<% end %>
